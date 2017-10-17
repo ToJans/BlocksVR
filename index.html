@@ -4,6 +4,8 @@
     <title>Marker AR with Google VR Blocks model</title>
     <meta charset="utf-8" />
     <script src="//unpkg.com/three"></script>
+    <script src="//unpkg.com/three/examples/js/loaders/MTLLoader.js"></script>
+    <script src="//unpkg.com/three/examples/js/loaders/OBJLoader.js"></script>
     <style>
         body {
             margin: 0px;
@@ -34,20 +36,29 @@
 
         document.body.appendChild(renderer.domElement);
 
-        var sphereGeo = new THREE.SphereGeometry(5);
-        var sphereMaterial = new THREE.MeshPhysicalMaterial();
-        var sphere = new THREE.Mesh(sphereGeo, sphereMaterial);
-        sphere.position.z = -10;
-        scene.add(sphere);
-        camera.lookAt(sphere.position);
+        var placeholder = new THREE.Object3D();
+
+        placeholder.position.z = -3;
+        scene.add(placeholder)
+
+        var path = "content/models/rocket/";
+        var mtlLoader = new THREE.MTLLoader();
+        mtlLoader.setPath(path);
+        mtlLoader.load("materials.mtl", function (materials) {
+            materials.preload();
+            var objLoader = new THREE.OBJLoader();
+            objLoader.setMaterials(materials);
+            objLoader.setPath(path);
+            objLoader.load("model.obj", function (obj) {
+                placeholder.add(obj);
+            });
+        });
 
         var sun = new THREE.DirectionalLight();
         sun.position.set(0.5, 0.5, 1)
         scene.add(sun);
 
         function renderLoop(timer) {
-
-            sphere.position.x = Math.sin(timer / 1000) * 5;
 
             renderer.render(scene, camera);
 
