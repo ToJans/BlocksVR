@@ -33,7 +33,19 @@
 
         document.body.appendChild(renderer.domElement);
 
-        renderer.render(scene, camera);
+        function renderLoop(timer) {
+
+            var clearColor = timer >> 4 & 255;
+
+            renderer.setClearColor(clearColor);
+
+            renderer.render(scene, camera);
+
+            window.requestAnimationFrame(renderLoop);
+        }
+
+        renderLoop(0);
+
 
     </script>
 </body>
