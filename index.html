@@ -57,6 +57,14 @@
         sun.position.set(0.5, 0.5, 1)
         scene.add(sun);
 
+        var environmentTexture = new THREE.TextureLoader().load("content/images/pano.jpg")
+
+        var sphereGeometry = new THREE.SphereGeometry(30,20,20);
+        var environmentMaterial = new THREE.MeshBasicMaterial({ map: environmentTexture });
+        var environment = new THREE.Mesh(sphereGeometry, environmentMaterial);
+        environment.scale.x = -1;
+        scene.add(environment);
+
         controls = new THREE.OrbitControls(camera, renderer.domElement);
         camera.position.z = 3;
 
