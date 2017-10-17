@@ -35,14 +35,14 @@
         document.body.appendChild(renderer.domElement);
 
         var sphereGeo = new THREE.SphereGeometry(5);
-        var sphereMaterial = new THREE.MeshPhysicalMaterial({wireframe: true});
+        var sphereMaterial = new THREE.MeshPhysicalMaterial();
         var sphere = new THREE.Mesh(sphereGeo, sphereMaterial);
         sphere.position.z = -10;
         scene.add(sphere);
         camera.lookAt(sphere.position);
 
         var sun = new THREE.DirectionalLight();
-        sun.position.set(0.5, 0.5, -1)
+        sun.position.set(0.5, 0.5, 1)
         scene.add(sun);
 
         function renderLoop(timer) {
