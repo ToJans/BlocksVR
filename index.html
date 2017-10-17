@@ -35,7 +35,7 @@
         document.body.appendChild(renderer.domElement);
 
         var sphereGeo = new THREE.SphereGeometry(5);
-        var sphereMaterial = new THREE.MeshNormalMaterial();
+        var sphereMaterial = new THREE.MeshPhysicalMaterial({wireframe: true});
         var sphere = new THREE.Mesh(sphereGeo, sphereMaterial);
 
         sphere.position.z = -10;
