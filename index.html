@@ -38,6 +38,7 @@
         document.body.appendChild(renderer.domElement);
 
         var placeholder = new THREE.Object3D();
+        placeholder.scale.setScalar(5)
         scene.add(placeholder)
 
         var path = "content/models/rocket/";
@@ -63,10 +64,15 @@
         var environmentMaterial = new THREE.MeshBasicMaterial({ map: environmentTexture });
         var environment = new THREE.Mesh(sphereGeometry, environmentMaterial);
         environment.scale.x = -1;
+        environment.position.y = -0.6;
         scene.add(environment);
 
+        var floor = environment.clone();
+        floor.scale.y = 0;
+        scene.add(floor);
+
         controls = new THREE.OrbitControls(camera, renderer.domElement);
-        camera.position.z = 3;
+        camera.position.z = 15;
 
         function renderLoop(timer) {
 
