@@ -6,6 +6,7 @@
     <script src="//unpkg.com/three"></script>
     <script src="//unpkg.com/three/examples/js/loaders/MTLLoader.js"></script>
     <script src="//unpkg.com/three/examples/js/loaders/OBJLoader.js"></script>
+    <script src="//unpkg.com/three/examples/js/controls/OrbitControls.js"></script>
     <style>
         body {
             margin: 0px;
@@ -21,7 +22,7 @@
 <body>
     <script type="text/javascript">
 
-        var scene, camera, renderer;
+        var scene, camera, renderer, controls;
 
         var FOV = 75;
         var aspectRatio = window.innerWidth / window.innerHeight;
@@ -37,8 +38,6 @@
         document.body.appendChild(renderer.domElement);
 
         var placeholder = new THREE.Object3D();
-
-        placeholder.position.z = -3;
         scene.add(placeholder)
 
         var path = "content/models/rocket/";
@@ -57,6 +56,9 @@
         var sun = new THREE.DirectionalLight();
         sun.position.set(0.5, 0.5, 1)
         scene.add(sun);
+
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        camera.position.z = 3;
 
         function renderLoop(timer) {
 
