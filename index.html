@@ -47,9 +47,6 @@
 
         function renderLoop(timer) {
 
-            var clearColor = Math.sin(timer/1000)*32+128;
-
-            renderer.setClearColor(clearColor);
             renderer.render(scene, camera);
 
             window.requestAnimationFrame(renderLoop);
