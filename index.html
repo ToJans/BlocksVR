@@ -47,6 +47,8 @@
 
         function renderLoop(timer) {
 
+            sphere.position.x = Math.sin(timer / 1000) * 5;
+
             renderer.render(scene, camera);
 
             window.requestAnimationFrame(renderLoop);
