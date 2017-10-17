@@ -29,9 +29,21 @@
 
         scene = new THREE.Scene();
 
-        renderer = new THREE.WebGLRenderer({ antialias: true })
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
         document.body.appendChild(renderer.domElement);
+
+        var sphereGeo = new THREE.SphereGeometry(5);
+        var sphereMaterial = new THREE.MeshNormalMaterial();
+        var sphere = new THREE.Mesh(sphereGeo, sphereMaterial);
+
+        sphere.position.z = -10;
+
+        scene.add(sphere);
+
+        camera.lookAt(sphere.position);
+
 
         function renderLoop(timer) {
 
