@@ -1,0 +1,24 @@
+{
+  "name": "blocksvr",
+  "version": "1.0.0",
+  "description": "Demo project for my \"3D/VR/AR on the web\" slideshow",
+  "main": "index.js",
+  "dependencies": {
+    "lite-server": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "lite": "lite-server",
+    "start": "npm run lite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToJans/BlocksVR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ToJans/BlocksVR/issues"
+  },
+  "homepage": "https://github.com/ToJans/BlocksVR#readme"
+}
