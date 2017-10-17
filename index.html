@@ -3,7 +3,38 @@
 <head>
     <title>Marker AR with Google VR Blocks model</title>
     <meta charset="utf-8" />
+    <script src="//unpkg.com/three"></script>
+    <style>
+        body {
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
 </head>
 <body>
+    <script type="text/javascript">
+
+        var scene, camera, renderer;
+
+        var FOV = 75;
+        var aspectRatio = window.innerWidth / window.innerHeight;
+        var nearClippingPlaneZ = 0.1;
+        var farClippingPlaneZ = 1000;
+        camera = new THREE.PerspectiveCamera(FOV, aspectRatio, nearClippingPlaneZ, farClippingPlaneZ);
+
+        scene = new THREE.Scene();
+
+        renderer = new THREE.WebGLRenderer({ antialias: true })
+
+        document.body.appendChild(renderer.domElement);
+
+        renderer.render(scene, camera);
+
+    </script>
 </body>
 </html>
