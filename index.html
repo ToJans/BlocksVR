@@ -35,7 +35,7 @@
 
         function renderLoop(timer) {
 
-            var clearColor = timer >> 4 & 255;
+            var clearColor = Math.sin(timer/1000)*32+128;
 
             renderer.setClearColor(clearColor);
 
